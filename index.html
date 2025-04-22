@@ -1,0 +1,45 @@
+// ✅ Web App con Twilio Voice (Frontend para recibir/realizar llamadas desde el navegador)
+// Este archivo es index.html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Real Estate Voice App</title>
+    <meta charset="UTF-8" />
+    <script src="https://media.twiliocdn.com/sdk/js/client/v1.13/twilio.min.js"></script>
+    <style>
+      body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; }
+      button { padding: 10px 20px; margin: 10px; font-size: 18px; }
+    </style>
+  </head>
+  <body>
+    <h1>Zitro Realty Voice App</h1>
+    <p>Conectado como <strong>Christian</strong></p>
+    <button onclick="call()">📞 Llamar</button>
+    <button onclick="hangup()">❌ Colgar</button>
+
+    <script>
+      let device;
+
+      // Obtener token desde tu backend (esto es un ejemplo con un token fijo)
+      fetch("/token")
+        .then((res) => res.text())
+        .then((token) => {
+          device = new Twilio.Device(token, { debug: true });
+
+          device.on("ready", () => console.log("Device listo"));
+          device.on("error", (error) => console.error("Error:", error.message));
+          device.on("connect", () => console.log("Conectado!"));
+          device.on("disconnect", () => console.log("Llamada finalizada"));
+        });
+
+      function call() {
+        device.connect();
+      }
+
+      function hangup() {
+        device.disconnectAll();
+      }
+    </script>
+  </body>
+</html>
