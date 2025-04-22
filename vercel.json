@@ -1,4 +1,3 @@
-// ✅ vercel.json FINAL
 {
   "routes": [
     {
@@ -9,12 +8,12 @@
       }
     },
     {
-      "src": "/$",
-      "dest": "/index.html"
+      "src": "/token",
+      "dest": "api/token.js"
     },
     {
-      "src": "/token",
-      "dest": "/api/token.js"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
