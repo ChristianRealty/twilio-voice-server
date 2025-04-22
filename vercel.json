@@ -9,7 +9,7 @@
     },
     {
       "src": "/token",
-      "dest": "api/token.js"
+      "dest": "/api/token.js"
     },
     {
       "src": "/(.*)",
