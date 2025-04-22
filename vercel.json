@@ -1,0 +1,11 @@
+{
+  "routes": [
+    {
+      "src": "/voice.xml",
+      "dest": "/voice.xml",
+      "headers": {
+        "Content-Type": "application/xml"
+      }
+    }
+  ]
+}
